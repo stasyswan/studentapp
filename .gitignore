@@ -1,0 +1,9 @@
+.idea/
+target
+.TemporaryItems
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+mysql
+dependency-reduced-pom.xml
