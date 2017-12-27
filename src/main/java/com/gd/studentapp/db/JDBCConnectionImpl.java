@@ -7,11 +7,15 @@ import org.apache.commons.dbcp.DriverManagerConnectionFactory;
 import org.apache.commons.dbcp.PoolableConnectionFactory;
 import org.apache.commons.dbcp.PoolingDataSource;
 import org.apache.commons.pool.impl.GenericObjectPool;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jvnet.hk2.annotations.Service;
 import javax.sql.DataSource;
 
 @Service
 public class JDBCConnectionImpl implements JDBCConnection {
+    private static final Logger logger = LogManager.getLogger(JDBCConnectionImpl.class);
+
     private static final Config CONFIG = ConfigFactory.load();
 
     private GenericObjectPool connectionPool = null;
@@ -39,7 +43,7 @@ public class JDBCConnectionImpl implements JDBCConnection {
             );
 
         } catch (Exception e) {
-            e.getLocalizedMessage();
+            logger.error("Connection error: " + e.getLocalizedMessage());
         }
         return new PoolingDataSource(connectionPool);
     }

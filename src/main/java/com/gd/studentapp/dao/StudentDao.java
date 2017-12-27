@@ -4,6 +4,8 @@ import com.gd.studentapp.db.JDBCConnection;
 import com.gd.studentapp.dto.Student;
 import com.gd.studentapp.dto.StudentWithGroupName;
 import com.gd.studentapp.repository.StudentRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jvnet.hk2.annotations.Service;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +17,8 @@ import java.util.List;
 
 @Service
 public class StudentDao implements StudentRepository {
+
+    private static final Logger logger = LogManager.getLogger(StudentDao.class);
 
     @Inject
     private JDBCConnection jdbcConnection;
@@ -47,6 +51,8 @@ public class StudentDao implements StudentRepository {
             ps.setDate(5, student.getBirthday());
 
             ps.execute();
+
+            logger.info("Added student: " + student.toString());
         } finally {
             if (ps != null) ps.close();
             if (connection != null) connection.close();
@@ -69,6 +75,8 @@ public class StudentDao implements StudentRepository {
             ps.setInt(1, id);
 
             ps.execute();
+
+            logger.info("Deleted student with id: " + id);
         } finally {
             if (ps != null) ps.close();
             if (connection != null) connection.close();
@@ -97,6 +105,8 @@ public class StudentDao implements StudentRepository {
             ps.setInt(6, student.getId());
 
             ps.execute();
+
+            logger.info("Updated student: " + student.toString());
         } finally {
             if (ps != null) ps.close();
             if (connection != null) connection.close();
@@ -143,6 +153,8 @@ public class StudentDao implements StudentRepository {
             if (connection != null) connection.close();
         }
 
+        logger.info("Found student: " + student.toString());
+
         return student;
     }
 
@@ -182,6 +194,8 @@ public class StudentDao implements StudentRepository {
             if (ps != null) ps.close();
             if (connection != null) connection.close();
         }
+
+        logger.info("Updated student: " + list.toString());
 
         return list;
     }
