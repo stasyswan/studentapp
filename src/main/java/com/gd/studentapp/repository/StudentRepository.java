@@ -1,4 +1,5 @@
-package com.gd.studentapp.service;
+package com.gd.studentapp.repository;
+
 
 import com.gd.studentapp.dto.Student;
 import com.gd.studentapp.dto.StudentWithGroupName;
@@ -8,14 +9,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Contract
-public interface StudentService {
+public interface StudentRepository {
+    List<StudentWithGroupName> getAllStudents() throws SQLException;
+
+    StudentWithGroupName getStudent(int id) throws SQLException;
+
     void updateStudent(Student student) throws SQLException;
 
     void deleteStudent(int id) throws SQLException;
 
     void addStudent(Student student) throws SQLException;
-
-    List<StudentWithGroupName> getAllStudents() throws SQLException;
-
-    StudentWithGroupName getStudent(int id) throws SQLException;
 }

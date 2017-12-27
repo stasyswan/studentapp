@@ -1,12 +1,13 @@
 package com.gd.studentapp.controller;
 
-import com.gd.studentapp.dao.StudentDao;
 import com.gd.studentapp.dto.Student;
 import com.gd.studentapp.dto.StudentWithGroupName;
 import com.gd.studentapp.exception.ResourceNotFoundEx;
 import com.gd.studentapp.exception.RestException;
 import com.gd.studentapp.service.StudentService;
 
+
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
@@ -15,7 +16,8 @@ import java.util.List;
 @Path("/api/v1/students")
 public class StudentController {
 
-    private StudentService studentService = new StudentService(new StudentDao());
+    @Inject
+    private StudentService studentService;
 
     @GET
     @Path("/{id}")

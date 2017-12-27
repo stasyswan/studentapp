@@ -15,7 +15,10 @@ public class App
         Config appConfig = ConfigFactory.load();
 
         ResourceConfig config = new ResourceConfig();
+
         config.packages("com.gd.studentapp");
+        config.register(new DependencyBinder());
+
         ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
         Server server = new Server(Integer.parseInt(appConfig.getString("port")));
