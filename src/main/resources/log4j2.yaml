@@ -13,8 +13,8 @@ Configutation:
           - ref: Console_Appender
       Logger:
         - name: com.gd.studentapp
-#          additivity: false
-          level: debug
+          additivity: false
+          ug
           AppenderRef:
             - ref: Console_Appender
               level: debug
