@@ -14,7 +14,6 @@ Configutation:
       Logger:
         - name: com.gd.studentapp
           additivity: false
-          ug
           AppenderRef:
             - ref: Console_Appender
               level: debug

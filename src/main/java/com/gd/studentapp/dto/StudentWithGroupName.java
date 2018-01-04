@@ -87,11 +87,11 @@ public class StudentWithGroupName {
 
     @Override
     public String toString() {
-        return new StringBuffer(" ID : ").append(this.id)
-                .append(" Name : ").append(this.name)
-                .append(" Surname : ").append(this.surname)
-                .append(" IqLevel : ").append(this.iqLevel)
-                .append(" GroupName : ").append(this.groupName)
+        return new StringBuffer(" ID : ").append(this.id + ", ")
+                .append(" Name : ").append(this.name + ", ")
+                .append(" Surname : ").append(this.surname + ", ")
+                .append(" IqLevel : ").append(this.iqLevel + ", ")
+                .append(" GroupName : ").append(this.groupName + ", ")
                 .append(" Birthday : ").append(this.birthday)
                 .toString();
     }

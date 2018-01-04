@@ -52,7 +52,7 @@ public class StudentDao implements StudentRepository {
 
             ps.execute();
 
-            logger.info("Added student: " + student.toString());
+            if (student != null) logger.info("Added student: " + student.toString());
         } finally {
             if (ps != null) ps.close();
             if (connection != null) connection.close();
@@ -106,7 +106,7 @@ public class StudentDao implements StudentRepository {
 
             ps.execute();
 
-            logger.info("Updated student: " + student.toString());
+            if (student != null) logger.info("Updated student: " + student.toString());
         } finally {
             if (ps != null) ps.close();
             if (connection != null) connection.close();
@@ -153,7 +153,7 @@ public class StudentDao implements StudentRepository {
             if (connection != null) connection.close();
         }
 
-        logger.info("Found student: " + student.toString());
+        if (student != null) logger.info("Found student: " + student.toString());
 
         return student;
     }
