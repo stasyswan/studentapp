@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
@@ -22,6 +23,7 @@ public class App {
 
         config.packages("com.gd.studentapp");
         config.register(new DependencyBinder());
+        config.register(JacksonFeature.class);
 
         ServletHolder servlet = new ServletHolder(new ServletContainer(config));
 
