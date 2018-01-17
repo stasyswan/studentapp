@@ -46,7 +46,7 @@ public class StudentController {
             }
             return allStudents;
         } catch (SQLException e) {
-            throw new RestException("Error retrieving all students" + e.getMessage(), e);
+            throw new RestException("Error retrieving all students", e);
         }
     }
 

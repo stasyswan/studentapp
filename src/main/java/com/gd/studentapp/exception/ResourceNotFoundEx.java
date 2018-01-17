@@ -23,7 +23,7 @@ public class ResourceNotFoundEx extends Exception implements ExceptionMapper<Res
 
     public ResourceNotFoundEx(String message, Throwable cause) {
         super(message, cause);
-        logger.info("ResourceNotFoundEx: " + message);
+        logger.info("ResourceNotFoundEx: " + message + ". " + cause.getMessage());
     }
 
     @Override

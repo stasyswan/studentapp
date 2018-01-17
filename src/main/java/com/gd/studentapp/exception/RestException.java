@@ -23,7 +23,7 @@ public class RestException extends Exception implements ExceptionMapper<RestExce
 
     public RestException(String message, Throwable cause) {
         super(message, cause);
-        logger.info("RestException: " + message);
+        logger.info("RestException: " + message + ". " + cause.getMessage());
     }
 
     @Override

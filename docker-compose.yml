@@ -1,0 +1,39 @@
+version : '3.1'
+services:
+
+  mysqldb:
+    image: mysql:5.7
+    container_name: mysqldb
+    volumes:
+      - /var/lib/mysql
+      - ./mysql:/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=students_staging
+    ports:
+      - "3306:3306"
+    networks:
+      - students-net
+    command: --init-file /mysql/data.sql
+
+  studentappserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    restart: always
+    depends_on:
+      - mysqldb
+    environment:
+      - CONN_URL=jdbc:mysql://mysqldb:3306/students_staging
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    networks:
+      - students-net
+
+networks:
+  students-net:
+    driver: bridge
+
